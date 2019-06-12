@@ -65,6 +65,10 @@ export default {
   methods: {
     ...mapActions('video', ['addVideo']),
     add () {
+      // here I handle only youtube case
+      // in real world example there should be a handler
+      // for all type of online video services
+      this.videoForm.url = this.formatYouTubeUrl(this.videoForm.url)
       this.addVideo(this.videoForm)
       !this.videoExists && this.resetForm()
     },
@@ -74,6 +78,13 @@ export default {
         title: '',
         url: ''
       }
+    },
+    formatYouTubeUrl (url) {
+      if (url.includes('embed')) {
+        return url
+      }
+      const videoID = url.split('v=')[1]
+      return 'https://www.youtube.com/embed/' + videoID
     }
   }
 }
