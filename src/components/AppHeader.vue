@@ -8,9 +8,9 @@
         <section class="float-right">
           <button
             class="display-inline"
-            @click="goToAddVideo"
+            @click="togglePage"
           >
-            Add Video
+            {{ buttonData.text }}
           </button>
         </section>
       </div>
@@ -23,11 +23,17 @@ import { mapState } from 'vuex'
 export default {
   name: 'AppHeader',
   computed: {
-    ...mapState('video', ['videos'])
+    ...mapState('video', ['videos']),
+    buttonData () {
+      return {
+        text: this.$route.name === 'home' ? 'Add Video' : 'Go back',
+        routeName: this.$route.name === 'home' ? 'add-video' : 'home'
+      }
+    }
   },
   methods: {
-    goToAddVideo () {
-      this.$router.push({ name: 'add-video' })
+    togglePage () {
+      this.$router.push({ name: this.buttonData.routeName })
     }
   }
 }

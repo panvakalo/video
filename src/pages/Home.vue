@@ -1,6 +1,6 @@
 <template>
   <layout-default>
-    this is home
+    This is home
   </layout-default>
 </template>
 
