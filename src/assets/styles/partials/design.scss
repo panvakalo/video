@@ -1,0 +1,38 @@
+@import 'colors';
+
+// borders
+.border {
+  &__black {
+    border: 1px solid $black;
+  }
+
+  &-radius {
+    &__small {
+      border-radius: 3px;
+    }
+
+    &__medium {
+      border-radius: 5px;
+    }
+  }
+}
+
+// text
+.text {
+  &-color {
+    &__black {
+      color: $black;
+    }
+  }
+}
+
+// background-colors
+@each $color-key, $color in $colors {
+  .bg__#{$color-key} {
+    background-color: #{$color};
+  }
+
+  .text__#{$color-key} {
+    color: #{$color};
+  }
+}

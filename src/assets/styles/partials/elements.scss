@@ -1,0 +1,54 @@
+@import 'colors';
+
+// form inputs
+input[type='text'], input[type='password'] {
+  border: 1px solid $gray;
+  border-radius: 1px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+
+  &:focus {
+    outline: none;
+    border: 1px solid $gray-dark;
+  }
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 3px;
+  border-style: none;
+  cursor: pointer;
+  background-color: $gray;
+  box-shadow: 0 5px 0 0 $gray-dark;
+  color: $black;
+  transition: all 0.2s ;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: bold;
+
+  &:hover {
+    background-color: $gray-light;
+  }
+
+  &:active {
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0 0 0 0 $gray !important;
+  }
+
+  &:focus {
+    outline: none !important;
+  }
+
+  &.primary {
+    background-color: $primary-light;
+    box-shadow: 0 5px 0 0 $primary-darker;
+    color: $primary-darker;
+
+    &:hover {
+      background-color: $primary;
+      color: $white;
+    }
+  }
+}

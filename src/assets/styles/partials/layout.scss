@@ -1,0 +1,90 @@
+// reset
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+// create margin and padding rule-sets
+$sizes: (
+  none: 0,
+  xs: 3,
+  s: 5,
+  m: 10,
+  l: 15,
+  xl: 20
+);
+$properties: (
+  m: 'margin',
+  p: 'padding'
+);
+$directions: (
+  t: 'top',
+  r: 'right',
+  b: 'bottom',
+  l: 'left',
+  a: ''
+);
+
+@each $size-key, $size in $sizes {
+  @each $property-key, $property in $properties {
+    @each $direction-key, $direction in $directions {
+      $css-property: if($direction == '', $property, #{$property}-#{$direction});
+      .#{$property-key}#{$direction-key}-#{$size-key} {
+        #{$css-property}: #{$size}px !important;
+      }
+    }
+  }
+}
+
+.m-auto {
+  margin: auto;
+}
+
+// create align rule-sets
+$align-directions: left, right, center, justify, inherit;
+
+@each $current-direction in $align-directions {
+  .text-align__#{$current-direction} {
+    text-align: #{$current-direction};
+  }
+}
+
+// create responsive widths
+$media-sizes: (
+        xs: 0,
+        s: 600,
+        m: 768,
+        l: 1200
+);
+$media-columns: (
+        1: 8.33,
+        2: 16.66,
+        3: 25,
+        4: 33.33,
+        5: 41.66,
+        6: 50,
+        7: 58.33,
+        8: 66.64,
+        9: 74.97,
+        10: 83.33,
+        11: 91.63,
+        12: 100
+);
+
+@each $media-key, $media-width in $media-sizes {
+  @each $column-key, $column-size in $media-columns {
+    @media (min-width: #{$media-width}px) {
+      .#{$media-key}#{$column-key} {
+        width: #{1% * $column-size};
+      }
+    }
+  }
+}
+
+.display {
+  &-inline {
+    display: inline-block;
+  }
+}

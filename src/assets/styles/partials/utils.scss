@@ -1,0 +1,38 @@
+.vertical-middle {
+  display: table;
+
+  &__inner {
+    display: table-cell;
+    vertical-align: middle;
+  }
+}
+
+.full {
+  &__width {
+    width: 100%;
+  }
+
+  &__height {
+    height: 100%;
+  }
+}
+
+.float {
+  &-left {
+    float: left;
+  }
+
+  &-right {
+    float: right;
+  }
+}
+
+.wrapper {
+  width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
