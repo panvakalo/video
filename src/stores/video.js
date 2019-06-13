@@ -6,9 +6,6 @@ export const videoStore = {
   },
   mutations: {
     pushToVideoArray (state, video) {
-      if (!state.videos.length) {
-        video.url += '?autoplay=1'
-      }
       state.videos.push(video)
     },
     setVideoExists (state, status) {
@@ -22,6 +19,17 @@ export const videoStore = {
         commit('setVideoExists', true)
       } else {
         commit('setVideoExists', false)
+        // add player options
+        payload.options = {
+          muted: true,
+          techOrder: ['youtube'],
+          sources: [{
+            type: 'video/youtube',
+            src: payload.url
+          }],
+          autoplay: true,
+          poster: './assets/images/logo.png'
+        }
         commit('pushToVideoArray', payload)
       }
     }
