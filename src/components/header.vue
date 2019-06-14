@@ -7,7 +7,7 @@
         </section>
         <section class="float-right">
           <button
-            class="display-inline"
+            class="display-inline header-button"
             @click="togglePage"
           >
             {{ buttonData.text }}
@@ -26,10 +26,13 @@ export default {
     ...mapState('video', ['videos']),
     buttonData () {
       return {
-        text: this.$route.name === 'home' ? 'Add Video' : 'Go back',
-        routeName: this.$route.name === 'home' ? 'add-video' : 'home'
+        text: !this.$route.name || this.$route.name === 'home' ? 'Add Video' : 'Go back',
+        routeName: !this.$route.name || this.$route.name === 'home' ? 'add-video' : 'home'
       }
     }
+  },
+  mounted () {
+    console.log(this.$route.name)
   },
   methods: {
     togglePage () {

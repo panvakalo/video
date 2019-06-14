@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import AppHeader from '../components/AppHeader'
+import AppHeader from '../components/header'
 
 export default {
   name: 'LayoutDefault',
