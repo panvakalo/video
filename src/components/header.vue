@@ -31,9 +31,6 @@ export default {
       }
     }
   },
-  mounted () {
-    console.log(this.$route.name)
-  },
   methods: {
     togglePage () {
       this.$router.push({ name: this.buttonData.routeName })

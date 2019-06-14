@@ -17,20 +17,15 @@
         />
       </div>
       <div class="xs12 m6 float-left">
-        <div
-          v-for="(video, i) in videos"
-          :key="`${video.title}-${video.artist}`"
-          class="video-thumbnail pointer mb-m pr-l pl-l pt-m pb-m bg__gray border-radius__small overflow-hidden"
-          :class="{'bg__blue-gray text__white': i === index }"
-          @click="setVideo(i)"
-        >
-          <div class="video-thumbnail__title full__width">
-            <span>Title: {{ video.title }}</span>
-          </div>
-          <hr>
-          <div class="video-thumbnail__artist vertical-middle full__width">
-            <span class="vertical-middle__inner">Artist: {{ video.artist }}</span>
-          </div>
+        <div class="pl-m">
+          <video-thumbnail
+            v-for="(video, i) in videos"
+            :key="`${video.title}-${video.artist}`"
+            :video="video"
+            :thumb-index="i"
+            :vid-index="index"
+            @clicked="setVideo"
+          />
         </div>
       </div>
     </div>
@@ -40,10 +35,12 @@
 <script>
 import LayoutDefault from '../layouts/LayoutDefault'
 import { mapState } from 'vuex'
+import VideoThumbnail from '../components/video-thumbnail'
 
 export default {
   name: 'Home',
   components: {
+    VideoThumbnail,
     LayoutDefault
   },
   data () {
@@ -75,22 +72,5 @@ export default {
   .video-js {
     width: 100% !important;
     min-height: 300px;
-  }
-
-  .video-thumbnail {
-    &.bg__blue-gray {
-      .video-thumbnail__data {
-        border-right: 1px solid white !important;
-      }
-    }
-
-    &__data {
-      border-right: 1px solid black;
-    }
-    &__title, &__artist {
-      i, span {
-        line-height: 25px;
-      }
-    }
   }
 </style>

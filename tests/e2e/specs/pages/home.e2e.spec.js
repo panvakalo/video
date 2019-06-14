@@ -1,5 +1,4 @@
 const baseUrl = 'http://localhost:8080'
-const activeColor = 'rgba(68, 85, 102, 1)'
 const videos = [
   {
     artist: 'Video',
@@ -61,14 +60,14 @@ module.exports = {
   },
   'First thumbnail is marked as active': (browser) => {
     browser
-      .expect.element('.video-thumbnail:first-of-type').to.have.css('background-color').which.equals(activeColor)
+      .assert.cssClassPresent('.video-thumbnail:first-of-type', 'active')
   },
   'Clicking on thumbnails changes the video and marks the thumbnail active': (browser) => {
     browser
       .waitForElementVisible('.homepage-content', 1000)
       .click(secondThumbnail)
       .pause(1000)
-      .assert.cssClassPresent(secondThumbnail, 'bg__blue-gray')
+      .assert.cssClassPresent(secondThumbnail, 'active')
       .assert.attributeContains('.video-player-box iframe', 'src', videos[1].url)
   },
   'When playlist finishes, it starts all over again automatically': (browser) => {

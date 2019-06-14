@@ -63,3 +63,22 @@ button {
     color: $dark-orange;
   }
 }
+
+.video-thumbnail {
+  box-sizing: border-box;
+  &.active{
+    background-color: $blue-gray;
+    .video-thumbnail__data, .video-thumbnail__avatar {
+      color: $white;
+    }
+  }
+  &__title, &__artist {
+    i, span {
+      line-height: 25px;
+    }
+  }
+
+  &__avatar i {
+    font-size: xx-large;
+  }
+}
