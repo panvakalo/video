@@ -1,7 +1,7 @@
 <template>
   <layout-default>
     <div class="wrapper pt-xl">
-      <form @submit.prevent="add">
+      <form class="videoForm" @submit.prevent="add">
         <input
           v-model="videoForm.artist"
           type="text"
