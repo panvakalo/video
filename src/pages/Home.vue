@@ -1,16 +1,22 @@
 <template>
   <layout-default>
-    <div class="pt-l">
-      <div class="xs12 m6 wrapper float-left">
+    <div class="pt-l homepage-content wrapper">
+      <div
+        v-if="isPlaylistEmpty"
+        class="alert alert__warning"
+      >
+        There are no videos in your playlist.
+      </div>
+      <div class="xs12 m6 float-left">
         <video-player
-          v-if="videos.length"
+          v-if="!isPlaylistEmpty"
           class="video-player-box full__width mb-xl"
           :options="videos[index].options"
           :playsinline="true"
           @ended="onPlayerEnded(index)"
         />
       </div>
-      <div class="xs12 m6 wrapper float-left">
+      <div class="xs12 m6 float-left">
         <div
           v-for="(video, i) in videos"
           :key="`${video.title}-${video.artist}`"
@@ -46,7 +52,10 @@ export default {
     }
   },
   computed: {
-    ...mapState('video', ['videos'])
+    ...mapState('video', ['videos']),
+    isPlaylistEmpty () {
+      return !this.videos.length
+    }
   },
   methods: {
     onPlayerEnded () {

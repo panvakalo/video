@@ -52,3 +52,14 @@ button {
     }
   }
 }
+
+.alert {
+  padding: 20px;
+  border-radius: 5px;
+
+  &__warning {
+    background: $light-orange;
+    border: 1px solid $orange;
+    color: $dark-orange;
+  }
+}
