@@ -1,4 +1,4 @@
-# vue-start
+# video
 
 ### Description
 This is the assignment for a vuejs video manager
@@ -16,6 +16,11 @@ npm run serve
 ### Run end-to-end tests
 ```
 npm run test:e2e
+```
+
+### Run unit tests
+```
+npm run test:unit
 ```
 
 # Developer's notes
